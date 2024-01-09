@@ -53,11 +53,11 @@ type any letter and press Enter.
                                     saldo -= saque
                                     extrato += f"-${saque:.2f}\n"
                                     limite -= 1
-
                                     templete(f"""
-Withdrawal of ${withdrawal:.2f} successful.
-Current balance: ${balance:.2f}""")
+Withdrawal of ${saque:.2f} successful.
+Current balance: ${saldo:.2f}""")
                                     break
+                                    
 
                             except ValueError:
                                 break
@@ -72,21 +72,22 @@ Current balance: ${balance:.2f}""")
                             print("Deposit option\n".upper())
                             deposito = float(input("""
 Enter the deposit amount:
-
+                                                   
 If you want to return to the main menu,
-type any letter and press Enter.
+type any letter and press Enter.2
+
                                                    
 >"""))
-                            
-
-
-                            if deposito >= 0:
+                            if deposito > 0:
                                 saldo += deposito
-                                extrato += f"+${deposito:.2f}\n"
+                                extrato += f"+{deposito:.2f}\n"
                                 templete(f"""
-Deposit of ${deposit:.2f} successful.
-Current balance: ${balance:.2f}""")
+Deposit of ${deposito:.2f} successful.
+Current balance: ${saldo:.2f}
+
+""")
                                 break
+
                             else:
                                 print("""
 Incorrect value. 
@@ -139,7 +140,7 @@ For example: 1 """)
 def templete(y):
     x = ""
     x += y
-    logo1 = " Banco Python "
+    logo1 = " Python Bank "
     print()
     print(logo1.center(80,'+'))
     print()
